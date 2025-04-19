@@ -5,7 +5,6 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { useEffect, useState } from "react";
 import {
   Dialog,
@@ -14,22 +13,22 @@ import {
   Drawer,
   Stack,
 } from "@mui/material";
-import Grid from "@mui/material/Grid";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import MenuIcon from "@mui/icons-material/Menu";
 import IconButton from "@mui/material/IconButton";
 import { useForm } from "react-hook-form";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { AccordionDetailsComponent } from "./components/AccordionDetailsComponent";
 import { DrawerAccordians } from "./components/DrawerAccordians";
 import CloseIcon from "@mui/icons-material/Close";
-import {
-  ABOUT_US_CONTENT,
-  CONTACT_PHONE_NUMBER,
-  CONTACT_US_PARAGRAPHS,
-} from "./constants";
-
+import { ABOUT_US_CONTENT } from "./constants";
+import SyledFooterBox from "./components/StyledFooterBox";
+import OrderSuccessBox from "./components/OrderSuccessBox";
+import WhatsappFloater from "./components/WhatsappFloater";
+import FillInformationBox from "./components/FillInformationBox";
+import ContactUsDialogContent from "./components/ContactUsDialogContent";
+import VaishaliCopyRight from "./components/VaishaliCopyRight";
+import Grid from "@mui/material/Grid";
+import ProductInfoBoxes from "./components/ProductInfoBoxes";
 const pages = ["About Us", "Contact Us"];
 type FormData = {
   fullname: string;
@@ -82,7 +81,18 @@ Shipping address: ${address}.`;
       alert("Sharing is not supported on this browser");
     }
   };
-
+  const gridProps = {
+    width: {
+      xs: "100%",
+      sm: "50%",
+    },
+  };
+  const gridPropsforBuyNow = {
+    width: {
+      xs: "100%",
+      sm: "32%",
+    },
+  };
   return (
     <>
       <Container maxWidth="xl" sx={{ textAlign: "center" }}>
@@ -169,24 +179,7 @@ Shipping address: ${address}.`;
                 </IconButton>
               </DialogTitle>
               <DialogContent>
-                <Typography variant="body2" sx={{ mt: 1 }}>
-                  <Typography variant="body2" sx={{ mt: 1 }}>
-                    {CONTACT_US_PARAGRAPHS[0]}
-                    <br />
-                    <br />
-                    {CONTACT_US_PARAGRAPHS[1]} 📞 Call us today at:{" "}
-                    <Button
-                      onClick={() =>
-                        (window.location.href = `tel:${CONTACT_PHONE_NUMBER}`)
-                      }
-                    >
-                      {CONTACT_PHONE_NUMBER}
-                    </Button>
-                    <br />
-                    <br />
-                    {CONTACT_US_PARAGRAPHS[2]}
-                  </Typography>
-                </Typography>
+                <ContactUsDialogContent />
               </DialogContent>
             </Dialog>
           </Toolbar>
@@ -208,26 +201,26 @@ Shipping address: ${address}.`;
           }}
         >
           <DrawerAccordians />
-          <Box sx={{ gap: 2, padding: "30px", textAlign: "center" }}>
-            <Typography> Vaishali Ayurvedic Industries</Typography>
-            <Typography>@2025</Typography>
-          </Box>
+          <VaishaliCopyRight />
         </Drawer>
         {/* Hero Section */}
-        <Container>
+        <Container
+          sx={{
+            margin: isMobile ? "10px" : "30px",
+          }}
+        >
           <Grid
             container
             flex={1}
             sx={{
               alignItems: "center",
-              justifyContent: "space-between",
-              height: isMobile ? "25vh" : "85vh",
-              color: "Black",
-              marginTop: isMobile ? "64px" : "10px",
-              padding: "10px",
             }}
           >
-            <Grid item xs={12} sm={6}>
+            <Grid
+              sx={{
+                ...gridProps,
+              }}
+            >
               <Typography
                 variant={isMobile ? "h4" : "h2"}
                 style={{ fontWeight: "bold", color: "Green" }}
@@ -264,7 +257,11 @@ Shipping address: ${address}.`;
               )}
             </Grid>
             {!isMobile && (
-              <Grid item xs={12} sm={6}>
+              <Grid
+                sx={{
+                  ...gridProps,
+                }}
+              >
                 <img
                   src="/Vaishali-hair-oil/hero.jpg"
                   alt="Vaishali Ayurvedic Hair Oil"
@@ -275,9 +272,24 @@ Shipping address: ${address}.`;
           </Grid>
         </Container>
 
-        <Container>
-          <Grid container spacing={2} justifyContent="center">
-            <Grid item xs={12} sm={3}>
+        <Container
+          sx={{
+            alignItems: "center",
+          }}
+        >
+          <Grid
+            container
+            spacing={2}
+            sx={{
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <Grid
+              sx={{
+                ...gridPropsforBuyNow,
+              }}
+            >
               <img
                 height={"500px"}
                 src="/Vaishali-hair-oil/hero.jpg"
@@ -285,7 +297,11 @@ Shipping address: ${address}.`;
               />
             </Grid>
 
-            <Grid item xs={12} sm={4}>
+            <Grid
+              sx={{
+                ...gridPropsforBuyNow,
+              }}
+            >
               <Box sx={{ maxWidth: "350px", padding: "20px" }}>
                 <Typography
                   gutterBottom
@@ -314,7 +330,12 @@ Shipping address: ${address}.`;
               </Box>
             </Grid>
 
-            <Grid item xs={12} sm={4} sx={{ padding: "20px" }}>
+            <Grid
+              sx={{
+                ...gridPropsforBuyNow,
+                padding: "20px",
+              }}
+            >
               <Typography sx={{ fontWeight: "bold" }}>₹ 195.00</Typography>
               <Typography sx={{ color: "green" }}>
                 Delivery in 4-5 days
@@ -347,24 +368,17 @@ Shipping address: ${address}.`;
           </Grid>
         </Container>
         {/* Product Info Section */}
-        <Stack
-          direction={isMobile ? "column" : "row"}
-          spacing={2}
+        <Container
           sx={{
-            alignItems: "center",
-            textAlign: "center",
+            justifyContent: "space-between",
+
+            color: "Black",
             padding: "10px",
-            margin: "10px",
           }}
         >
-          <Box width={isMobile ? "100%" : "40%"}>
-            <img
-              height={"400px"}
-              src="/Vaishali-hair-oil/hairs2-removebg-preview.png"
-            />
-          </Box>
-          <AccordionDetailsComponent />
-        </Stack>
+          <ProductInfoBoxes isMobile={isMobile} />
+        </Container>
+
         <Dialog
           open={openDialog}
           onClose={() => {
@@ -450,31 +464,7 @@ Shipping address: ${address}.`;
                   />
                 </form>
               </Box>
-              <Box
-                sx={{
-                  padding: isMobile ? "20px" : "32px",
-                  textAlign: "center",
-                }}
-              >
-                <img
-                  src="/Vaishali-hair-oil/hero.jpg"
-                  alt="Vaishali Ayurvedic Hair Oil"
-                  style={{
-                    width: "170px",
-                    height: isMobile ? "250px" : "200px",
-                  }}
-                />
-                <Typography
-                  style={{ fontWeight: "bold" }}
-                  variant="h6"
-                  marginTop={isMobile ? "10px" : "70px"}
-                >
-                  Please fill this information
-                </Typography>
-                <Typography style={{ fontWeight: "bold" }} variant="h6">
-                  to book your order
-                </Typography>
-              </Box>
+              <FillInformationBox isMobile={isMobile} />
             </Stack>
           }
         />
@@ -487,61 +477,11 @@ Shipping address: ${address}.`;
             borderRadius: "30px",
           }}
           maxWidth="md"
-          children={
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "column",
-                padding: "36px",
-                color: "green",
-              }}
-            >
-              <CheckCircleIcon sx={{ fontSize: 100 }} />
-              <Typography
-                variant={isMobile ? "h6" : "h4"}
-                style={{ fontWeight: "bold" }}
-              >
-                Order Placed Successfully
-              </Typography>
-            </Box>
-          }
+          children={<OrderSuccessBox isMobile={isMobile} />}
         />
       </Container>
-
-      <Box
-        sx={{
-          mt: 5,
-          backgroundColor: "#000000",
-          color: "#ffffff",
-          paddingTop: "15px",
-          paddingBottom: "15px",
-          width: isMobile ? "100%" : "100vw",
-        }}
-      >
-        <Typography variant="body1" style={{ fontWeight: "bold" }}>
-          All rights reserved &copy; QuantumCrafts
-        </Typography>
-      </Box>
-
-      <IconButton
-        href="https://wa.me/7350506173"
-        target="_blank"
-        sx={{
-          position: "fixed",
-          bottom: "30px",
-          right: "20px",
-          backgroundColor: "#25D366",
-          color: "white",
-          zIndex: 1000,
-          "&:hover": {
-            backgroundColor: "#128C7E",
-          },
-        }}
-      >
-        <WhatsAppIcon sx={{ fontSize: 36 }} />
-      </IconButton>
+      <SyledFooterBox isMobile={isMobile} />
+      <WhatsappFloater />
     </>
   );
 }
