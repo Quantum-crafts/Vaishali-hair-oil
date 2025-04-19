@@ -12,7 +12,7 @@ const FillInformationBox = ({ isMobile }: FillInformationBoxProps) => {
       }}
     >
       <img
-        src="/Vaishali-hair-oil/hero.jpg"
+        src="./hero.jpg"
         alt="Vaishali Ayurvedic Hair Oil"
         style={{
           width: "170px",

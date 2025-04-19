@@ -102,7 +102,7 @@ Shipping address: ${address}.`;
         >
           <Toolbar sx={{ justifyContent: "space-between" }}>
             <img
-              src="/Vaishali-hair-oil/logo_bg.png"
+              src="./logo_bg.png"
               height={"64px"}
               style={{ cursor: "pointer" }}
               onClick={() => {
@@ -263,7 +263,7 @@ Shipping address: ${address}.`;
                 }}
               >
                 <img
-                  src="/Vaishali-hair-oil/hero.jpg"
+                  src="./hero.jpg"
                   alt="Vaishali Ayurvedic Hair Oil"
                   height={"550px"}
                 />
@@ -292,7 +292,7 @@ Shipping address: ${address}.`;
             >
               <img
                 height={"500px"}
-                src="/Vaishali-hair-oil/hero.jpg"
+                src="./hero.jpg"
                 alt="Hero"
               />
             </Grid>

@@ -5,7 +5,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 export const DrawerAccordians = () => {
   return (
     <Box sx={{ flex: 1, overflowY: "auto", gap: 2, padding: "30px" }}>
-      <img src="/Vaishali-hair-oil/logo_bg.png" width={"240px"} />
+      <img src="./logo_bg.png" width={"240px"} />
       <Accordion>
         <AccordionSummary
           expandIcon={
