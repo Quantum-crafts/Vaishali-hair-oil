@@ -92,7 +92,7 @@ Shipping address: ${address}.`;
         >
           <Toolbar sx={{ justifyContent: "space-between" }}>
             <img
-              src="/logo_bg.png"
+              src="/Vaishali-hair-oil/logo_bg.png"
               height={"64px"}
               style={{ cursor: "pointer" }}
               onClick={() => {
@@ -266,7 +266,7 @@ Shipping address: ${address}.`;
             {!isMobile && (
               <Grid item xs={12} sm={6}>
                 <img
-                  src="/hero.jpg"
+                  src="/Vaishali-hair-oil/hero.jpg"
                   alt="Vaishali Ayurvedic Hair Oil"
                   height={"550px"}
                 />
@@ -278,7 +278,11 @@ Shipping address: ${address}.`;
         <Container>
           <Grid container spacing={2} justifyContent="center">
             <Grid item xs={12} sm={3}>
-              <img height={"500px"} src="/hero.jpg" alt="Hero" />
+              <img
+                height={"500px"}
+                src="/Vaishali-hair-oil/hero.jpg"
+                alt="Hero"
+              />
             </Grid>
 
             <Grid item xs={12} sm={4}>
@@ -354,7 +358,10 @@ Shipping address: ${address}.`;
           }}
         >
           <Box width={isMobile ? "100%" : "40%"}>
-            <img height={"400px"} src="/hairs2-removebg-preview.png" />
+            <img
+              height={"400px"}
+              src="/Vaishali-hair-oil/hairs2-removebg-preview.png"
+            />
           </Box>
           <AccordionDetailsComponent />
         </Stack>
@@ -450,7 +457,7 @@ Shipping address: ${address}.`;
                 }}
               >
                 <img
-                  src="/hero.jpg"
+                  src="/Vaishali-hair-oil/hero.jpg"
                   alt="Vaishali Ayurvedic Hair Oil"
                   style={{
                     width: "170px",
