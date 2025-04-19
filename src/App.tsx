@@ -12,9 +12,9 @@ import {
   DialogContent,
   DialogTitle,
   Drawer,
-  Grid,
   Stack,
 } from "@mui/material";
+import Grid from "@mui/material/Grid";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -24,7 +24,11 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { AccordionDetailsComponent } from "./components/AccordionDetailsComponent";
 import { DrawerAccordians } from "./components/DrawerAccordians";
 import CloseIcon from "@mui/icons-material/Close";
-import { ABOUT_US_CONTENT, CONTACT_PHONE_NUMBER, CONTACT_US_PARAGRAPHS } from "./constants";
+import {
+  ABOUT_US_CONTENT,
+  CONTACT_PHONE_NUMBER,
+  CONTACT_US_PARAGRAPHS,
+} from "./constants";
 
 const pages = ["About Us", "Contact Us"];
 type FormData = {
@@ -72,7 +76,7 @@ Shipping address: ${address}.`;
           url: window.location.href,
         });
       } catch (error) {
-       alert("Error sharing");
+        console.log("Error sharing", error);
       }
     } else {
       alert("Sharing is not supported on this browser");
@@ -88,7 +92,7 @@ Shipping address: ${address}.`;
         >
           <Toolbar sx={{ justifyContent: "space-between" }}>
             <img
-              src="../public/logo_bg.png"
+              src="/logo_bg.png"
               height={"64px"}
               style={{ cursor: "pointer" }}
               onClick={() => {
@@ -210,68 +214,71 @@ Shipping address: ${address}.`;
           </Box>
         </Drawer>
         {/* Hero Section */}
-        <Grid
-          container
-          flex={1}
-          sx={{
-            alignItems: "center",
-            justifyContent: "space-between",
-            height: isMobile ? "25vh" : "85vh",
-            color: "Black",
-            marginTop: "64px",
-            padding: "10px",
-          }}
-        >
-          <Grid item xs={12} sm={6}>
-            <Typography
-              variant={isMobile ? "h4" : "h1"}
-              style={{ fontWeight: "bold", color: "Green" }}
-            >
-              Vaishali Ayurvedic
-            </Typography>
-            <Typography
-              variant={isMobile ? "h4" : "h1"}
-              style={{ fontWeight: "bold", color: "Green" }}
-            >
-              Hair Oil
-            </Typography>
-            <Typography
-              variant={isMobile ? "body2" : "subtitle1"}
-              style={{ marginTop: "10px", color: "Black" }}
-            >
-              Useful for hair growth, anti-hair fall, and anti-dandruff.
-              Suitable for both men and women.
-            </Typography>
-            {!isMobile && (
-              <Button
-                variant="contained"
-                style={{
-                  marginTop: "20px",
-                  backgroundColor: "Black",
-                  borderRadius: "20px",
-                }}
-                onClick={() => {
-                  setOpenDialog(true);
-                }}
+        <Container>
+          <Grid
+            container
+            flex={1}
+            sx={{
+              alignItems: "center",
+              justifyContent: "space-between",
+              height: isMobile ? "25vh" : "85vh",
+              color: "Black",
+              marginTop: isMobile ? "64px" : "10px",
+              padding: "10px",
+            }}
+          >
+            <Grid item xs={12} sm={6}>
+              <Typography
+                variant={isMobile ? "h4" : "h2"}
+                style={{ fontWeight: "bold", color: "Green" }}
               >
-                Buy Now
-              </Button>
+                Vaishali Ayurvedic
+              </Typography>
+              <Typography
+                variant={isMobile ? "h4" : "h2"}
+                style={{ fontWeight: "bold", color: "Green" }}
+              >
+                Hair Oil
+              </Typography>
+              <Typography
+                variant={isMobile ? "body2" : "subtitle1"}
+                style={{ marginTop: "10px", color: "Black" }}
+              >
+                Useful for hair growth, anti-hair fall, and anti-dandruff.
+                Suitable for both men and women.
+              </Typography>
+              {!isMobile && (
+                <Button
+                  variant="contained"
+                  style={{
+                    marginTop: "20px",
+                    backgroundColor: "Black",
+                    borderRadius: "20px",
+                  }}
+                  onClick={() => {
+                    setOpenDialog(true);
+                  }}
+                >
+                  Buy Now
+                </Button>
+              )}
+            </Grid>
+            {!isMobile && (
+              <Grid item xs={12} sm={6}>
+                <img
+                  src="/hero.jpg"
+                  alt="Vaishali Ayurvedic Hair Oil"
+                  height={"550px"}
+                />
+              </Grid>
             )}
           </Grid>
-          {!isMobile && (
-            <Grid item xs={12} sm={6}>
-              <img
-                src="../public/hero.jpg"
-                alt="Vaishali Ayurvedic Hair Oil"
-                height={"550px"}
-              />
-            </Grid>
-          )}
-        </Grid>
+        </Container>
+
         <Container>
           <Grid container spacing={2} justifyContent="center">
             <Grid item xs={12} sm={3}>
-              <img height={"500px"} src="../public/hero.jpg" alt="Hero" />
+              <img height={"500px"} src="/hero.jpg" alt="Hero" />
             </Grid>
 
             <Grid item xs={12} sm={4}>
@@ -303,7 +310,7 @@ Shipping address: ${address}.`;
               </Box>
             </Grid>
 
-            <Grid item xs={12} sm={4} padding={"20px"}>
+            <Grid item xs={12} sm={4} sx={{ padding: "20px" }}>
               <Typography sx={{ fontWeight: "bold" }}>₹ 195.00</Typography>
               <Typography sx={{ color: "green" }}>
                 Delivery in 4-5 days
@@ -347,7 +354,7 @@ Shipping address: ${address}.`;
           }}
         >
           <Box width={isMobile ? "100%" : "40%"}>
-            <img height={"400px"} src="../public/hairs2-removebg-preview.png" />
+            <img height={"400px"} src="/hairs2-removebg-preview.png" />
           </Box>
           <AccordionDetailsComponent />
         </Stack>
@@ -443,7 +450,7 @@ Shipping address: ${address}.`;
                 }}
               >
                 <img
-                  src="../public/hero.jpg"
+                  src="/hero.jpg"
                   alt="Vaishali Ayurvedic Hair Oil"
                   style={{
                     width: "170px",
